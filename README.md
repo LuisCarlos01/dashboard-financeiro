@@ -4,12 +4,48 @@ Aplicação web moderna (PWA/SPA responsiva) para controle financeiro pessoal, d
 
 ## 🎯 Funcionalidades
 
+- ✅ **Autenticação frontend-only** com session token
 - ✅ Cadastro de lançamentos financeiros (Entrada/Saída)
 - ✅ Listagem com filtros avançados (data, tipo, categoria)
 - ✅ Ordenação por data e valor
 - ✅ Cards de resumo financeiro (Total Entradas, Total Saídas, Saldo)
 - ✅ Persistência local (LocalStorage)
 - ✅ Interface responsiva e moderna
+
+## 🔐 Autenticação
+
+O sistema implementa autenticação frontend-only adequada para uso pessoal. **Configuração obrigatória antes de usar:**
+
+1. Copie o arquivo de exemplo:
+   ```bash
+   cp env.example .env.local
+   ```
+
+2. Gere um hash para sua senha:
+   ```bash
+   npm run generate-hash
+   ```
+
+3. Configure suas credenciais no `.env.local`:
+   ```bash
+   VITE_AUTH_EMAIL=seu@email.com
+   VITE_AUTH_PASSWORD_HASH=hash_gerado_aqui
+   VITE_AUTH_USER_NAME=Seu Nome
+   ```
+
+4. Inicie a aplicação:
+   ```bash
+   npm run dev
+   ```
+
+📖 **Documentação completa:** [SETUP_AUTH.md](SETUP_AUTH.md)
+
+**Recursos:**
+- Login com email/senha
+- Sessão persistente (7 dias)
+- Auto-login após refresh
+- Hash SHA-256 via Web Crypto API
+- Arquitetura preparada para migração futura para backend
 
 ## 🚀 Tecnologias
 
@@ -21,13 +57,32 @@ Aplicação web moderna (PWA/SPA responsiva) para controle financeiro pessoal, d
 - **date-fns** - Manipulação de datas
 - **Context API** - Gerenciamento de estado
 
-## 📦 Instalação
+## 📦 Instalação e Início Rápido
+
+### Início Rápido (5 minutos)
 
 ```bash
-# Instalar dependências
+# 1. Instalar dependências
 npm install
 
-# Executar em modo desenvolvimento
+# 2. Gerar hash de senha
+npm run generate-hash
+
+# 3. Criar .env.local (copiar env.example)
+cp env.example .env.local
+
+# 4. Configurar credenciais no .env.local
+
+# 5. Iniciar aplicação
+npm run dev
+```
+
+📖 **Guia completo:** [QUICKSTART.md](QUICKSTART.md)
+
+### Comandos Disponíveis
+
+```bash
+# Desenvolvimento
 npm run dev
 
 # Build para produção
@@ -35,6 +90,12 @@ npm run build
 
 # Preview da build de produção
 npm run preview
+
+# Lint (verificar código)
+npm run lint
+
+# Gerar hash de senha
+npm run generate-hash
 ```
 
 ## 🏗️ Estrutura do Projeto

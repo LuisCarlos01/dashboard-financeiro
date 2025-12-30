@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { TransactionProvider } from '@/contexts/TransactionContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Header } from '@/components/layout/Header';
 import { Home } from '@/pages/Home';
 import { Transactions } from '@/pages/Transactions';
+import { Login } from '@/pages/Login';
 
-function App() {
+function AppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'transactions'>('home');
 
   return (
@@ -45,6 +47,30 @@ function App() {
       </div>
     </TransactionProvider>
   );
+}
+
+function App() {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Auth guard
+  if (!isAuthenticated) {
+    return <Login />;
+  }
+
+  // Authenticated - show dashboard
+  return <AppContent />;
 }
 
 export default App;
