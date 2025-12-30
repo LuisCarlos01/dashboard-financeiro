@@ -1,0 +1,90 @@
+name: 🔧 Chore / Tarefa Técnica
+description: Tarefas técnicas, melhorias de infraestrutura, atualizações de dependências, etc.
+title: '[CHORE] '
+labels: ['chore', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este template para tarefas técnicas, melhorias de infraestrutura, atualizações de dependências, refatorações, etc.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Tipo de Tarefa
+      description: Selecione o tipo de tarefa técnica
+      options:
+        - Dependências - Atualização de pacotes npm
+        - CI/CD - Melhorias nos pipelines
+        - Infraestrutura - Configurações de deploy, ambientes
+        - Refatoração - Melhorias de código sem mudança de funcionalidade
+        - Performance - Otimizações de performance
+        - Segurança - Correções ou melhorias de segurança
+        - Documentação - Atualização de documentação técnica
+        - Configuração - Mudanças em arquivos de config (ESLint, TypeScript, etc.)
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição
+      description: Descreva detalhadamente a tarefa técnica a ser realizada
+      placeholder: |
+        Ex: Atualizar todas as dependências para suas versões mais recentes compatíveis.
+        Verificar breaking changes e atualizar código se necessário...
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivação
+      description: Por que esta tarefa é necessária?
+      placeholder: |
+        Ex: Algumas dependências têm vulnerabilidades conhecidas (CVE-2024-XXXX).
+        Além disso, as versões mais recentes trazem melhorias de performance...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo
+      description: Quais arquivos/componentes serão afetados?
+      placeholder: |
+        Ex: 
+        - package.json
+        - package-lock.json
+        - src/components/TransactionForm.tsx (ajustes para nova API)
+        - .github/workflows/ci.yml (atualizar versões de actions)
+
+  - type: textarea
+    id: breaking-changes
+    attributes:
+      label: Breaking Changes
+      description: Esta tarefa introduz breaking changes? Se sim, descreva
+      placeholder: Ex: A atualização do React 18.2 para 18.3 não introduz breaking changes...
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Plano de Testes
+      description: Como esta mudança será testada?
+      placeholder: |
+        Ex:
+        1. Executar npm run lint
+        2. Executar npm run build
+        3. Testar manualmente todas as funcionalidades principais
+        4. Verificar se não há regressões...
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: Verifiquei se há issues relacionadas
+        - label: Esta tarefa não introduz mudanças de funcionalidade visíveis ao usuário
+        - label: Documentação será atualizada se necessário
+

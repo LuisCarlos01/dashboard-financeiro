@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
-import type { Transaction, TransactionFilters, TransactionType } from '@/types/transaction.types';
+import type { TransactionFilters } from '@/types/transaction.types';
 
 const CATEGORIAS = [
   'Alimentação',

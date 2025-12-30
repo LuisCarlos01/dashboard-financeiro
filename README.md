@@ -91,6 +91,83 @@ interface Transaction {
 - Investimentos
 - Outros
 
+## 🚀 CI/CD e Deploy
+
+Este projeto possui pipelines automatizados de CI/CD configurados com GitHub Actions e deploy no Vercel.
+
+### Pipelines
+
+**CI Pipeline (`.github/workflows/ci.yml`):**
+- Executa em todos os Pull Requests e pushes para `main`/`develop`
+- Validações: ESLint → TypeCheck → Build
+- Bloqueia merge se qualquer validação falhar
+
+**CD Pipeline (`.github/workflows/cd.yml`):**
+- **Preview Deploy**: Cria ambiente de preview no Vercel para cada PR
+- **Production Deploy**: Deploy automático em produção quando código é mergeado em `main`
+- Executa apenas após CI passar com sucesso
+
+### Configuração para Deploy
+
+**Pré-requisitos:**
+1. Criar projeto no Vercel (via [dashboard](https://vercel.com) ou CLI)
+2. Obter credenciais do Vercel:
+   ```bash
+   npm i -g vercel
+   vercel login
+   vercel link
+   cat .vercel/project.json  # Extrair VERCEL_ORG_ID e VERCEL_PROJECT_ID
+   ```
+3. Adicionar secrets no GitHub:
+   - `VERCEL_TOKEN` - Token de deploy (gerar em [Vercel Settings](https://vercel.com/account/tokens))
+   - `VERCEL_ORG_ID` - ID da organização
+   - `VERCEL_PROJECT_ID` - ID do projeto
+   
+   **Como adicionar:** `Settings → Secrets and variables → Actions → New repository secret`
+
+### Branch Protection
+
+**Configuração recomendada para `main`:**
+- ✅ Require pull request before merging (1 approval)
+- ✅ Require status checks to pass (`CI`, `Build`)
+- ✅ Require branches to be up to date
+- ✅ Do not allow bypassing
+
+**Como configurar:** `Settings → Branches → Add rule → Branch name pattern: main`
+
+### Commits Semânticos
+
+Este projeto segue [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <subject>
+
+Types: feat, fix, docs, style, refactor, test, chore
+```
+
+**Exemplos:**
+- `feat(transactions): adiciona filtro por categoria`
+- `fix(header): corrige responsividade em mobile`
+- `chore(deps): atualiza React para 18.3.0`
+
+### Workflow de Desenvolvimento
+
+1. Criar feature branch: `git checkout -b feat/nova-funcionalidade`
+2. Fazer commits semânticos
+3. Abrir Pull Request para `main`
+4. CI roda automaticamente (lint + build)
+5. Preview deploy criado no Vercel (URL disponível no PR)
+6. Code review + aprovação
+7. Merge → deploy automático em produção
+
+### Dependabot
+
+O projeto está configurado com Dependabot para atualizações automáticas de dependências:
+- Verifica updates semanalmente (segundas-feiras)
+- Cria PRs automáticos para atualizações de segurança
+- Agrupa dependências de desenvolvimento em um único PR
+- Limita a 5 PRs abertos simultaneamente
+
 ## 🔮 Próximos Passos
 
 - [ ] Dashboard analítico com gráficos (Recharts/Chart.js)
@@ -98,6 +175,9 @@ interface Transaction {
 - [ ] Migração para backend (API REST)
 - [ ] Integração com Power BI
 - [ ] Exportação de dados (CSV/JSON)
+- [ ] Adicionar testes automatizados (Vitest + React Testing Library)
+- [ ] Lighthouse CI para auditoria de performance
+- [ ] CodeQL para análise de segurança
 
 ## 📝 Licença
 

@@ -1,0 +1,121 @@
+name: 🐛 Bug Report
+description: Reporte um bug ou problema encontrado no projeto
+title: '[BUG] '
+labels: ['bug', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um bug! Por favor, preencha o formulário abaixo com o máximo de detalhes possível.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Descreva claramente o que aconteceu
+      placeholder: Ex: Ao tentar adicionar uma nova transação, o formulário não valida o campo de valor...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Lista de passos para reproduzir o comportamento
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Role até '...'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que você esperava que acontecesse?
+      placeholder: Ex: O formulário deveria validar o campo e mostrar uma mensagem de erro...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento Atual
+      description: O que realmente aconteceu?
+      placeholder: Ex: O formulário aceita valores inválidos e não mostra nenhuma mensagem...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Se aplicável, adicione screenshots para ajudar a explicar o problema
+      placeholder: Arraste e solte imagens aqui ou cole URLs
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Navegador
+      description: Em qual navegador o bug ocorre?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Outro
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Versão do Navegador
+      description: Versão do navegador (ex: Chrome 120.0.0.0)
+      placeholder: Ex: Chrome 120.0.0.0
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema Operacional
+      description: Em qual SO o bug ocorre?
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Android
+        - iOS
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs/Erros do Console
+      description: Se houver erros no console do navegador, cole aqui
+      render: shell
+      placeholder: |
+        Exemplo:
+        Error: Cannot read property 'x' of undefined
+          at TransactionForm.tsx:45
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto Adicional
+      description: Qualquer outra informação relevante sobre o bug
+      placeholder: Ex: O bug só acontece quando há mais de 100 transações cadastradas...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmação
+      options:
+        - label: Verifiquei que este bug não foi reportado anteriormente
+          required: true
+        - label: Estou usando a versão mais recente do projeto
+          required: true
+

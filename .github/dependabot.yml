@@ -1,0 +1,39 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+    open-pull-requests-limit: 5
+    reviewers:
+      - 'Luis'
+    labels:
+      - 'dependencies'
+      - 'automated'
+    # Group updates for dev dependencies
+    groups:
+      dev-dependencies:
+        patterns:
+          - '@types/*'
+          - '@typescript-eslint/*'
+          - 'eslint*'
+          - 'vite'
+          - 'tailwindcss'
+          - 'postcss'
+          - 'autoprefixer'
+    # Ignore major version updates for critical packages
+    ignore:
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+    commit-message:
+      prefix: 'chore'
+      prefix-development: 'chore'
+      include: 'scope'
+

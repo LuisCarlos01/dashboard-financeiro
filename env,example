@@ -1,0 +1,42 @@
+# ============================================
+# Variáveis de Ambiente - Dashboard Financeiro
+# ============================================
+#
+# IMPORTANTE: No Vite, apenas variáveis com prefixo VITE_ são expostas ao cliente
+# Variáveis sem o prefixo VITE_ só estão disponíveis no servidor/build
+#
+# ============================================
+
+# ============================================
+# Configurações da Aplicação
+# ============================================
+
+# Nome da aplicação
+# VITE_APP_NAME=Dashboard Financeiro
+
+# Ambiente (development, staging, production)
+# VITE_APP_ENV=development
+
+# ============================================
+# API Backend (quando implementar)
+# ============================================
+
+# URL base da API
+# VITE_API_URL=https://api.exemplo.com
+
+# Timeout para requisições (em ms)
+# VITE_API_TIMEOUT=30000
+
+# ============================================
+# Analytics (opcional)
+# ============================================
+Y6hHBcVZCC1dFpeovamzUj3w
+# Google Analytics ID
+# VITE_GA_ID=G-XXXXXXXXXX
+
+# ============================================
+# Features Flags (opcional)
+# ============================================
+
+# Habilitar modo debug
+# VITE_DEBUG=false

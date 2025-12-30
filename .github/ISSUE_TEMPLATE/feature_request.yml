@@ -1,0 +1,74 @@
+name: ✨ Feature Request
+description: Sugira uma nova funcionalidade ou melhoria
+title: '[FEATURE] '
+labels: ['enhancement', 'needs-triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma nova funcionalidade! Por favor, descreva sua ideia com o máximo de detalhes possível.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema ou Necessidade
+      description: Qual problema esta funcionalidade resolveria? Ou qual necessidade ela atenderia?
+      placeholder: Ex: Atualmente não é possível exportar os dados financeiros para análise externa...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução Proposta
+      description: Descreva como você imagina que esta funcionalidade funcionaria
+      placeholder: |
+        Ex: Adicionar um botão "Exportar" que permita baixar os dados em formato CSV ou JSON.
+        O arquivo exportado deveria incluir todas as transações com seus respectivos campos...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas Consideradas
+      description: Descreva alternativas ou soluções que você já considerou
+      placeholder: Ex: Também considerei adicionar integração direta com Google Sheets, mas exportação de arquivo seria mais simples...
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups/Designs
+      description: Se você tem designs, mockups ou screenshots de referência, adicione aqui
+      placeholder: Arraste e solte imagens aqui ou cole URLs
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade
+      description: Qual a prioridade desta funcionalidade para você?
+      options:
+        - Baixa - Seria legal ter, mas não é urgente
+        - Média - Seria útil e melhoraria a experiência
+        - Alta - É importante para o uso do sistema
+        - Crítica - Bloqueia ou dificulta muito o uso
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Caso de Uso
+      description: Descreva um exemplo prático de como você usaria esta funcionalidade
+      placeholder: |
+        Ex: Todo mês preciso fazer um relatório financeiro para meu contador.
+        Com a exportação em CSV, poderia simplesmente baixar os dados e enviar por email...
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribuição
+      options:
+        - label: Estou disposto a ajudar a implementar esta funcionalidade
+        - label: Posso ajudar com testes ou documentação
+
