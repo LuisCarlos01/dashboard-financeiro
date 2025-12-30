@@ -186,5 +186,5 @@ Após configurar a autenticação:
 
 ---
 
-**Dúvidas?** Consulte o [README.md](README.md) principal ou a [documentação do plano](.cursor/plans/Trade-offs%20técnicos/autenticação_frontend_simples.plan.md).
+**Dúvidas?** Consulte o [README.md](../../README.md) principal ou os [ADRs de arquitetura](../adr/README.md).
 

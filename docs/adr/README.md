@@ -66,6 +66,15 @@ Organização do código com camada de serviços abstraída que isola persistên
 
 ---
 
+### [ADR-007 - Princípios e Diretrizes Arquiteturais](./ADR-007-principios-diretrizes-arquiteturais.md)
+**Status:** Aceito | **Data:** 30/12/2025
+
+Definição de princípios de engenharia de software e diretrizes arquiteturais a serem seguidos no desenvolvimento contínuo do projeto, baseados em "Progressive Architecture".
+
+**Decisão:** Arquitetura progressiva - começar simples, preparar para crescimento, refatorar quando necessário, evitar over-engineering.
+
+---
+
 ## 🎯 Como Usar Esta Documentação
 
 ### Para Desenvolvedores Novos
@@ -98,14 +107,15 @@ Organização do código com camada de serviços abstraída que isola persistên
 - **ADR-001** (Frontend-Only) → **ADR-006** (Service Layer) → Migração futura
 - **ADR-003** (LocalStorage) → **ADR-006** (Service Layer) → Abstração para migração
 - **ADR-004** (Context API) → Independente, mas complementa arquitetura geral
+- **ADR-007** (Princípios Arquiteturais) → Fundamenta e conecta todos os ADRs anteriores
 
 ## 📖 Referências
 
-- [Documentação de Autenticação](../config%20auth/SETUP_AUTH.md)
-- [Quick Start Guide](../quick%20start/QUICKSTART.md)
+- [Documentação de Autenticação](../config-auth/SETUP_AUTH.md)
+- [Quick Start Guide](../quickstart/QUICKSTART.md)
 - [README Principal](../../README.md)
 
 ---
 
 **Última atualização:** 30/12/2025  
-**Total de ADRs:** 6
+**Total de ADRs:** 7
