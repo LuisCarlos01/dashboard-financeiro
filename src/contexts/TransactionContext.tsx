@@ -57,6 +57,8 @@ export function TransactionProvider({ children }: { children: ReactNode }) {
   );
 }
 
+// Hook customizado para consumir o contexto de transações
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTransactions() {
   const context = useContext(TransactionContext);
   if (!context) {
