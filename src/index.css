@@ -4,41 +4,101 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-neutral-50 text-neutral-900;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer components {
+  /* Tipografia para valores monetários */
+  .font-currency {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Botões */
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply px-4 py-2 rounded-md font-semibold transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .btn-primary {
-    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+    @apply bg-primary-700 text-white hover:bg-primary-800 hover:-translate-y-0.5 active:translate-y-0 focus:ring-primary-600 disabled:bg-neutral-300 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
   }
 
   .btn-success {
-    @apply bg-entrada text-white hover:bg-entrada-dark focus:ring-entrada;
+    @apply bg-income-600 text-white hover:bg-income-700 hover:-translate-y-0.5 active:translate-y-0 focus:ring-income-600 disabled:bg-neutral-300 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
   }
 
   .btn-danger {
-    @apply bg-saida text-white hover:bg-saida-dark focus:ring-saida;
+    @apply bg-expense-600 text-white hover:bg-expense-700 hover:-translate-y-0.5 active:translate-y-0 focus:ring-expense-600 disabled:bg-neutral-300 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0;
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500;
+    @apply bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-50 focus:ring-primary-600 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-300 disabled:cursor-not-allowed;
   }
 
   .btn-outline {
-    @apply border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500;
+    @apply border border-neutral-300 text-neutral-700 hover:bg-neutral-50 focus:ring-neutral-500 disabled:bg-neutral-100 disabled:text-neutral-400 disabled:border-neutral-300 disabled:cursor-not-allowed;
   }
 
+  /* Inputs */
   .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    @apply w-full px-3 py-2.5 border-2 border-neutral-300 rounded-md text-sm transition-all duration-150 focus:outline-none focus:border-primary-600 focus:ring-4 focus:ring-primary-100 disabled:bg-neutral-100 disabled:cursor-not-allowed;
   }
 
+  .input:hover:not(:disabled) {
+    @apply border-neutral-400;
+  }
+
+  .input-error {
+    @apply border-error-600 focus:border-error-600 focus:ring-error-100;
+  }
+
+  /* Cards */
   .card {
-    @apply bg-white rounded-lg shadow-md p-6;
+    @apply bg-white rounded-lg shadow-sm p-6 border border-neutral-200 transition-all duration-200;
+  }
+
+  .card-hover:hover {
+    @apply shadow-md border-primary-300 -translate-y-0.5;
+  }
+
+  .card-metric {
+    @apply p-5 border-l-4;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-xl text-xs font-medium;
+  }
+
+  .badge-income {
+    @apply bg-income-100 text-income-900;
+  }
+
+  .badge-expense {
+    @apply bg-expense-100 text-expense-900;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-900;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-600;
+  }
+
+  /* Indicadores de tendência */
+  .trend-indicator {
+    @apply inline-flex items-center gap-1 text-sm font-semibold;
+  }
+
+  .trend-up {
+    @apply text-income-600;
+  }
+
+  .trend-down {
+    @apply text-expense-600;
   }
 }
 
