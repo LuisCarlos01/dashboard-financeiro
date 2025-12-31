@@ -1,6 +1,6 @@
 import type { Transaction } from '@/types/transaction.types';
 import type { MonthlySummary, CategoryDistribution, BalancePoint } from '@/types/dashboard.types';
-import { format, parseISO, startOfMonth, endOfMonth, eachMonthOfInterval, isWithinInterval } from 'date-fns';
+import { format, parseISO, eachMonthOfInterval, isWithinInterval } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 export const dashboardService = {
