@@ -46,9 +46,9 @@ export const SaldoEvolutionChart = memo(function SaldoEvolutionChart({ data }: S
           aria-label="Evolução do saldo acumulado ao longo do tempo"
         >
           <defs>
-            <linearGradient id="colorSaldo" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
-              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+            <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#2563eb" stopOpacity={0.2} />
+              <stop offset="95%" stopColor="#2563eb" stopOpacity={0.02} />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -79,13 +79,13 @@ export const SaldoEvolutionChart = memo(function SaldoEvolutionChart({ data }: S
           <Area
             type="monotone"
             dataKey="saldo"
-            stroke="#3b82f6"
-            strokeWidth={2}
+            stroke="#2563eb"
+            strokeWidth={2.5}
             fillOpacity={1}
-            fill="url(#colorSaldo)"
+            fill="url(#colorBalance)"
             name="Saldo"
             dot={false}
-            activeDot={{ r: 4, fill: '#3b82f6' }}
+            activeDot={{ r: 4, fill: '#2563eb' }}
           />
         </AreaChart>
       </ResponsiveContainer>
