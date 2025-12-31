@@ -18,7 +18,7 @@ export interface BalancePoint {
   saldo: number;
 }
 
-export type PeriodFilterType = 'current-month' | 'last-3-months' | 'last-6-months' | 'custom';
+export type PeriodFilterType = 'current-month' | 'last-month' | 'last-3-months' | 'last-6-months' | 'current-year' | 'this-week' | 'custom';
 
 export interface PeriodFilter {
   type: PeriodFilterType;
