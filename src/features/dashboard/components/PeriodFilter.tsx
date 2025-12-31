@@ -26,11 +26,12 @@ export function PeriodFilter({ value, onChange }: PeriodFilterProps) {
         startDate = format(startOfMonth(today), 'yyyy-MM-dd');
         endDate = format(endOfMonth(today), 'yyyy-MM-dd');
         break;
-      case 'last-month':
+      case 'last-month': {
         const lastMonth = subMonths(today, 1);
         startDate = format(startOfMonth(lastMonth), 'yyyy-MM-dd');
         endDate = format(endOfMonth(lastMonth), 'yyyy-MM-dd');
         break;
+      }
       case 'last-3-months':
         startDate = format(startOfMonth(subMonths(today, 2)), 'yyyy-MM-dd');
         endDate = format(endOfMonth(today), 'yyyy-MM-dd');
@@ -89,11 +90,12 @@ export function PeriodFilter({ value, onChange }: PeriodFilterProps) {
         startDate = format(startOfMonth(today), 'dd/MM/yyyy');
         endDate = format(endOfMonth(today), 'dd/MM/yyyy');
         return `${startDate} - ${endDate}`;
-      case 'last-month':
+      case 'last-month': {
         const lastMonth = subMonths(today, 1);
         startDate = format(startOfMonth(lastMonth), 'dd/MM/yyyy');
         endDate = format(endOfMonth(lastMonth), 'dd/MM/yyyy');
         return `${startDate} - ${endDate}`;
+      }
       case 'last-3-months':
         startDate = format(startOfMonth(subMonths(today, 2)), 'dd/MM/yyyy');
         endDate = format(endOfMonth(today), 'dd/MM/yyyy');

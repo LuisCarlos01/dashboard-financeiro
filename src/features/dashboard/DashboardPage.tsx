@@ -50,11 +50,12 @@ export function DashboardPage() {
         start = format(startOfMonth(today), 'yyyy-MM-dd');
         end = format(endOfMonth(today), 'yyyy-MM-dd');
         break;
-      case 'last-month':
+      case 'last-month': {
         const lastMonth = subMonths(today, 1);
         start = format(startOfMonth(lastMonth), 'yyyy-MM-dd');
         end = format(endOfMonth(lastMonth), 'yyyy-MM-dd');
         break;
+      }
       case 'last-3-months':
         start = format(startOfMonth(subMonths(today, 2)), 'yyyy-MM-dd');
         end = format(endOfMonth(today), 'yyyy-MM-dd');

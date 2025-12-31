@@ -10,6 +10,17 @@ interface SaldoEvolutionChartProps {
 }
 
 export const SaldoEvolutionChart = memo(function SaldoEvolutionChart({ data }: SaldoEvolutionChartProps) {
+  // Se houver muitos pontos, reduzir para melhor visualização
+  const displayData = useMemo(() => {
+    if (data.length > 50) {
+      return data.filter((_, index) => index % Math.ceil(data.length / 50) === 0);
+    }
+    return data;
+  }, [data]);
+
+  const minSaldo = useMemo(() => Math.min(...displayData.map(d => d.saldo)), [displayData]);
+  const maxSaldo = useMemo(() => Math.max(...displayData.map(d => d.saldo)), [displayData]);
+
   if (data.length === 0) {
     return (
       <EmptyState
@@ -23,17 +34,6 @@ export const SaldoEvolutionChart = memo(function SaldoEvolutionChart({ data }: S
       />
     );
   }
-
-  // Se houver muitos pontos, reduzir para melhor visualização
-  const displayData = useMemo(() => {
-    if (data.length > 50) {
-      return data.filter((_, index) => index % Math.ceil(data.length / 50) === 0);
-    }
-    return data;
-  }, [data]);
-
-  const minSaldo = useMemo(() => Math.min(...displayData.map(d => d.saldo)), [displayData]);
-  const maxSaldo = useMemo(() => Math.max(...displayData.map(d => d.saldo)), [displayData]);
   const initialSaldo = displayData[0]?.saldo ?? 0;
   const finalSaldo = displayData[displayData.length - 1]?.saldo ?? 0;
 
