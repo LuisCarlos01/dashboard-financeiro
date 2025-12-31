@@ -31,7 +31,7 @@ export const EntradasSaidasChart = memo(function EntradasSaidasChart({ data }: E
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         aria-label="Gráfico de Entradas vs Saídas por mês"
       >
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+        <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
         <XAxis 
           dataKey="monthLabel" 
           tick={{ fontSize: 12 }}
@@ -57,14 +57,14 @@ export const EntradasSaidasChart = memo(function EntradasSaidasChart({ data }: E
         <ReferenceLine y={0} stroke="#9ca3af" strokeDasharray="2 2" />
         <Bar 
           dataKey="entradas" 
-          fill="#10b981" 
+          fill="#059669" 
           name="Entradas" 
           radius={[4, 4, 0, 0]}
           aria-label="Entradas"
         />
         <Bar 
           dataKey="saidas" 
-          fill="#ef4444" 
+          fill="#dc2626" 
           name="Saídas" 
           radius={[4, 4, 0, 0]}
           aria-label="Saídas"

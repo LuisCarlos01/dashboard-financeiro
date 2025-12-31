@@ -84,6 +84,15 @@ Implementação de dashboard analítico com visualização de dados através de 
 
 ---
 
+### [ADR-009 - Design System Financeiro e Identidade Visual](./ADR-009-design-system-financeiro.md)
+**Status:** Aceito | **Data:** 31/12/2025
+
+Implementação de design system completo com identidade visual profissional para produtos financeiros, incluindo paleta de cores semântica, tipografia otimizada para dados financeiros, componentes escaláveis e acessibilidade WCAG AA.
+
+**Decisão:** Design system baseado em Tailwind CSS com paleta de cores semântica, tipografia híbrida (Inter + JetBrains Mono), componentes com variantes e estados bem definidos, garantindo consistência visual e acessibilidade.
+
+---
+
 ## 🎯 Como Usar Esta Documentação
 
 ### Para Desenvolvedores Novos
@@ -118,6 +127,7 @@ Implementação de dashboard analítico com visualização de dados através de 
 - **ADR-004** (Context API) → Independente, mas complementa arquitetura geral
 - **ADR-007** (Princípios Arquiteturais) → Fundamenta e conecta todos os ADRs anteriores
 - **ADR-008** (Dashboard Analítico) → Implementa **ADR-006** (Service Layer) + **ADR-004** (Context API) + **ADR-007** (Princípios)
+- **ADR-009** (Design System) → Aplica identidade visual em **ADR-008** (Dashboard) + todos os componentes UI, seguindo **ADR-007** (Princípios)
 
 ## 📖 Referências
 
@@ -128,4 +138,4 @@ Implementação de dashboard analítico com visualização de dados através de 
 ---
 
 **Última atualização:** 31/12/2025  
-**Total de ADRs:** 8
+**Total de ADRs:** 9

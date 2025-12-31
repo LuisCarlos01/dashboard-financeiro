@@ -10,22 +10,20 @@ interface CategoriaDistributionChartProps {
   maxItems?: number;
 }
 
-const COLORS = [
-  '#ef4444', // red-500
-  '#f97316', // orange-500
-  '#f59e0b', // amber-500
-  '#eab308', // yellow-500
-  '#84cc16', // lime-500
-  '#22c55e', // green-500
-  '#10b981', // emerald-500
-  '#14b8a6', // teal-500
-  '#06b6d4', // cyan-500
-  '#3b82f6', // blue-500
-  '#6366f1', // indigo-500
+// Paleta de 12 cores para categorias (consistente e acessível)
+const CATEGORY_COLORS = [
+  '#2563eb', // primary-600 (azul)
+  '#7c3aed', // violet-600
+  '#db2777', // pink-600
+  '#dc2626', // expense-600 (vermelho)
+  '#ea580c', // warning-600 (laranja)
+  '#ca8a04', // yellow-600
+  '#16a34a', // success-600 (verde)
+  '#059669', // income-600 (verde esmeralda)
+  '#0891b2', // cyan-600
+  '#0284c7', // info-600 (azul claro)
+  '#6366f1', // indigo-600
   '#8b5cf6', // violet-500
-  '#a855f7', // purple-500
-  '#d946ef', // fuchsia-500
-  '#ec4899', // pink-500
 ];
 
 export const CategoriaDistributionChart = memo(function CategoriaDistributionChart({ 
@@ -96,7 +94,7 @@ export const CategoriaDistributionChart = memo(function CategoriaDistributionCha
               aria-label="Total por categoria"
             >
               {chartData.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell key={`cell-${index}`} fill={CATEGORY_COLORS[index % CATEGORY_COLORS.length]} />
               ))}
             </Bar>
           </BarChart>
@@ -108,7 +106,7 @@ export const CategoriaDistributionChart = memo(function CategoriaDistributionCha
               <div className="flex items-center gap-2">
                 <div
                   className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                  style={{ backgroundColor: CATEGORY_COLORS[index % CATEGORY_COLORS.length] }}
                 />
                 <span className="text-gray-700">{item.categoria}</span>
               </div>
@@ -139,7 +137,7 @@ export const CategoriaDistributionChart = memo(function CategoriaDistributionCha
           dataKey="total"
         >
           {chartData.map((_, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell key={`cell-${index}`} fill={CATEGORY_COLORS[index % CATEGORY_COLORS.length]} />
           ))}
         </Pie>
         <Tooltip
