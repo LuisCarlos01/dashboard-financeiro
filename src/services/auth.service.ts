@@ -48,6 +48,25 @@ export const authService = {
   },
 
   /**
+   * Valida email para reset de senha
+   * @param email Email a ser validado
+   * @returns true se email corresponde ao configurado, false caso contrário
+   * @throws Error genérico se email não corresponder (por segurança, não revela emails válidos)
+   */
+  validateEmailForPasswordReset(email: string): boolean {
+    const validEmail = import.meta.env.VITE_AUTH_EMAIL;
+
+    if (!validEmail) {
+      throw new Error(
+        'Credenciais não configuradas. Configure VITE_AUTH_EMAIL no .env.local'
+      );
+    }
+
+    // Retorna true apenas se email corresponder exatamente
+    return email.toLowerCase().trim() === validEmail.toLowerCase().trim();
+  },
+
+  /**
    * PLACEHOLDER para migração futura
    * Quando houver backend, substituir verifyCredentials() por:
    * 

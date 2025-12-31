@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Home } from '@/pages/Home';
 import { Transactions } from '@/pages/Transactions';
 import { Login } from '@/pages/Login';
+import { ForgotPassword } from '@/pages/ForgotPassword';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'transactions'>('home');
@@ -51,6 +52,7 @@ function AppContent() {
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth();
+  const [authPage, setAuthPage] = useState<'login' | 'forgot-password'>('login');
 
   // Loading state
   if (isLoading) {
@@ -66,7 +68,10 @@ function App() {
 
   // Auth guard
   if (!isAuthenticated) {
-    return <Login />;
+    if (authPage === 'forgot-password') {
+      return <ForgotPassword onBackToLogin={() => setAuthPage('login')} />;
+    }
+    return <Login onForgotPassword={() => setAuthPage('forgot-password')} />;
   }
 
   // Authenticated - show dashboard

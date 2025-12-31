@@ -22,8 +22,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Verificar credenciais
     const userData = await authService.verifyCredentials(credentials);
 
+    // Calcular duração da sessão: 365 dias se "Lembrar-me" marcado, senão 7 dias padrão
+    const durationDays = credentials.rememberMe ? 365 : 7;
+
     // Criar sessão
-    const session = sessionService.createSession(userData);
+    const session = sessionService.createSession(userData, durationDays);
 
     // Atualizar estado
     setUser(session.user);
