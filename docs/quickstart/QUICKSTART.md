@@ -64,9 +64,9 @@ Agora você pode:
 
 ## 📚 Documentação Completa
 
-- **Autenticação detalhada:** [SETUP_AUTH.md](SETUP_AUTH.md)
-- **README principal:** [README.md](README.md)
-- **Deploy na Vercel:** [SETUP_VERCEL.md](SETUP_VERCEL.md)
+- **Autenticação detalhada:** [SETUP_AUTH.md](../config-auth/SETUP_AUTH.md)
+- **README principal:** [README.md](../../README.md)
+- **Deploy na Vercel:** [SETUP_VERCEL.md](../config-vercel/SETUP_VERCEL.md)
 
 ---
 

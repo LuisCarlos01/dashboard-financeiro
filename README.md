@@ -38,7 +38,7 @@ O sistema implementa autenticação frontend-only adequada para uso pessoal. **C
    npm run dev
    ```
 
-📖 **Documentação completa:** [SETUP_AUTH.md](SETUP_AUTH.md)
+📖 **Documentação completa:** [SETUP_AUTH.md](docs/config-auth/SETUP_AUTH.md)
 
 **Recursos:**
 - Login com email/senha
@@ -77,7 +77,7 @@ cp env.example .env.local
 npm run dev
 ```
 
-📖 **Guia completo:** [QUICKSTART.md](QUICKSTART.md)
+📖 **Guia completo:** [QUICKSTART.md](docs/quickstart/QUICKSTART.md)
 
 ### Comandos Disponíveis
 
@@ -228,6 +228,26 @@ O projeto está configurado com Dependabot para atualizações automáticas de d
 - Cria PRs automáticos para atualizações de segurança
 - Agrupa dependências de desenvolvimento em um único PR
 - Limita a 5 PRs abertos simultaneamente
+
+## 📚 Documentação
+
+Este projeto possui documentação técnica completa organizada em:
+
+### 📖 Guias de Configuração
+- **[Quick Start Guide](docs/quickstart/QUICKSTART.md)** - Inicie em 5 minutos
+- **[Setup de Autenticação](docs/config-auth/SETUP_AUTH.md)** - Configure login e senha
+- **[Deploy na Vercel](docs/config-vercel/SETUP_VERCEL.md)** - Deploy em produção
+
+### 🏛️ Architecture Decision Records (ADRs)
+- **[ADR-001](docs/adr/ADR-001-arquitetura-frontend-only.md)** - Arquitetura Frontend-Only
+- **[ADR-002](docs/adr/ADR-002-autenticacao-frontend-sha256.md)** - Autenticação Frontend
+- **[ADR-003](docs/adr/ADR-003-persistencia-localstorage.md)** - Persistência LocalStorage
+- **[ADR-004](docs/adr/ADR-004-gerenciamento-estado-context-api.md)** - Context API
+- **[ADR-005](docs/adr/ADR-005-modelo-dados-valor-positivo.md)** - Modelo de Dados
+- **[ADR-006](docs/adr/ADR-006-service-layer-migracao-backend.md)** - Service Layer
+- **[ADR-007](docs/adr/ADR-007-principios-diretrizes-arquiteturais.md)** - Princípios Arquiteturais
+
+📋 **[Índice completo de ADRs](docs/adr/README.md)**
 
 ## 🔮 Próximos Passos
 
