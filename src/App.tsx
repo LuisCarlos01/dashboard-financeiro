@@ -4,11 +4,12 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Header } from '@/components/layout/Header';
 import { Home } from '@/pages/Home';
 import { Transactions } from '@/pages/Transactions';
+import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { Login } from '@/pages/Login';
 import { ForgotPassword } from '@/pages/ForgotPassword';
 
 function AppContent() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'transactions'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'transactions' | 'dashboard'>('home');
 
   return (
     <TransactionProvider>
@@ -38,12 +39,24 @@ function AppContent() {
               >
                 Lançamentos
               </button>
+              <button
+                onClick={() => setCurrentPage('dashboard')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  currentPage === 'dashboard'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Dashboard
+              </button>
             </div>
           </div>
         </nav>
 
         <main>
-          {currentPage === 'home' ? <Home /> : <Transactions />}
+          {currentPage === 'home' && <Home />}
+          {currentPage === 'transactions' && <Transactions />}
+          {currentPage === 'dashboard' && <DashboardPage />}
         </main>
       </div>
     </TransactionProvider>
