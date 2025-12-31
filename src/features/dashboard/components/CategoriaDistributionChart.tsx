@@ -1,7 +1,9 @@
 import { memo, useMemo } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import type { CategoryDistribution } from '@/types/dashboard.types';
 import { formatCurrency } from '@/utils/formatters';
+import { CustomTooltip } from '@/components/charts/CustomTooltip';
+import { EmptyState } from '@/components/charts/EmptyState';
 
 interface CategoriaDistributionChartProps {
   data: CategoryDistribution[];
@@ -48,17 +50,82 @@ export const CategoriaDistributionChart = memo(function CategoriaDistributionCha
     return result;
   }, [data, maxItems]);
 
+  const useBarChart = chartData.length > 6;
+
   if (chartData.length === 0) {
     return (
-      <div className="flex items-center justify-center h-64 text-gray-500">
-        <p>Não há dados de saídas para o período selecionado</p>
+      <EmptyState
+        title="Sem gastos no período"
+        message="Não há transações de saída registradas para o período selecionado. Tente alterar o filtro ou adicione novas transações."
+        icon={
+          <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        }
+      />
+    );
+  }
+
+  if (useBarChart) {
+    // Usar gráfico de barras horizontais quando há muitas categorias
+    return (
+      <div>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart 
+            data={chartData} 
+            layout="vertical"
+            margin={{ top: 20, right: 30, left: 100, bottom: 5 }}
+            aria-label="Distribuição de gastos por categoria"
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <XAxis type="number" stroke="#6b7280" tickFormatter={(value) => formatCurrency(value)} />
+            <YAxis 
+              type="category" 
+              dataKey="categoria" 
+              stroke="#6b7280"
+              width={90}
+              tick={{ fontSize: 12 }}
+            />
+            <Tooltip
+              content={<CustomTooltip formatter={(value, name) => [formatCurrency(value), name]} />}
+            />
+            <Bar 
+              dataKey="total" 
+              fill="#3b82f6"
+              radius={[0, 4, 4, 0]}
+              aria-label="Total por categoria"
+            >
+              {chartData.map((_, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+        <div className="mt-4 space-y-2">
+          <p className="text-sm font-semibold text-gray-700 mb-2">Detalhamento:</p>
+          {chartData.map((item, index) => (
+            <div key={item.categoria} className="flex items-center justify-between text-sm">
+              <div className="flex items-center gap-2">
+                <div
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                />
+                <span className="text-gray-700">{item.categoria}</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="text-gray-600">{item.porcentagem.toFixed(1)}%</span>
+                <span className="font-semibold text-gray-900">{formatCurrency(item.total)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 
   return (
     <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
+      <PieChart aria-label="Distribuição de gastos por categoria">
         <Pie
           data={chartData}
           cx="50%"
@@ -76,12 +143,7 @@ export const CategoriaDistributionChart = memo(function CategoriaDistributionCha
           ))}
         </Pie>
         <Tooltip
-          formatter={(value: number) => formatCurrency(value)}
-          contentStyle={{
-            backgroundColor: 'white',
-            border: '1px solid #e5e7eb',
-            borderRadius: '0.375rem',
-          }}
+          content={<CustomTooltip formatter={(value, name) => [formatCurrency(value), name]} />}
         />
         <Legend 
           verticalAlign="bottom" 

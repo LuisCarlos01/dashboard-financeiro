@@ -75,6 +75,15 @@ Definição de princípios de engenharia de software e diretrizes arquiteturais 
 
 ---
 
+### [ADR-008 - Dashboard Analítico com Recharts](./ADR-008-dashboard-analitico-recharts.md)
+**Status:** Aceito | **Data:** 31/12/2025
+
+Implementação de dashboard analítico com visualização de dados através de gráficos, usando Recharts como biblioteca de charts.
+
+**Decisão:** Dashboard com 3 gráficos (entradas vs saídas, distribuição por categoria, evolução do saldo), agregações isoladas em service layer, performance otimizada com memoização.
+
+---
+
 ## 🎯 Como Usar Esta Documentação
 
 ### Para Desenvolvedores Novos
@@ -108,6 +117,7 @@ Definição de princípios de engenharia de software e diretrizes arquiteturais 
 - **ADR-003** (LocalStorage) → **ADR-006** (Service Layer) → Abstração para migração
 - **ADR-004** (Context API) → Independente, mas complementa arquitetura geral
 - **ADR-007** (Princípios Arquiteturais) → Fundamenta e conecta todos os ADRs anteriores
+- **ADR-008** (Dashboard Analítico) → Implementa **ADR-006** (Service Layer) + **ADR-004** (Context API) + **ADR-007** (Princípios)
 
 ## 📖 Referências
 
@@ -117,5 +127,5 @@ Definição de princípios de engenharia de software e diretrizes arquiteturais 
 
 ---
 
-**Última atualização:** 30/12/2025  
-**Total de ADRs:** 7
+**Última atualização:** 31/12/2025  
+**Total de ADRs:** 8
