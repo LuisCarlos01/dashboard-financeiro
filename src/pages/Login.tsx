@@ -4,9 +4,14 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
 import type { LoginCredentials } from '@/types/auth.types';
 
-export function Login() {
+interface LoginProps {
+  onForgotPassword?: () => void;
+}
+
+export function Login({ onForgotPassword }: LoginProps) {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -97,6 +102,16 @@ export function Login() {
                 )}
               </div>
 
+              {/* Lembrar-me */}
+              <div>
+                <Checkbox
+                  id="rememberMe"
+                  label="Lembrar-me"
+                  {...register('rememberMe')}
+                  disabled={isLoading}
+                />
+              </div>
+
               {/* Erro geral */}
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
@@ -112,6 +127,20 @@ export function Login() {
               >
                 {isLoading ? 'Entrando...' : 'Entrar'}
               </Button>
+
+              {/* Link Esqueci minha senha */}
+              {onForgotPassword && (
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={onForgotPassword}
+                    disabled={isLoading}
+                    className="text-sm text-blue-600 hover:text-blue-800 underline disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Esqueci minha senha
+                  </button>
+                </div>
+              )}
             </form>
 
             {/* Info sobre configuração */}

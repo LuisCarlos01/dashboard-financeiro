@@ -7,12 +7,15 @@ const SESSION_DURATION_DAYS = 7;
 export const sessionService = {
   /**
    * Cria uma nova sessão para o usuário
+   * @param user Dados do usuário
+   * @param durationDays Duração da sessão em dias (padrão: 7 dias)
    */
-  createSession(user: User): SessionData {
+  createSession(user: User, durationDays?: number): SessionData {
+    const days = durationDays ?? SESSION_DURATION_DAYS;
     const session: SessionData = {
       token: generateUUID(),
       user,
-      expiresAt: Date.now() + (SESSION_DURATION_DAYS * 24 * 60 * 60 * 1000),
+      expiresAt: Date.now() + (days * 24 * 60 * 60 * 1000),
     };
 
     localStorage.setItem(SESSION_KEY, JSON.stringify(session));
